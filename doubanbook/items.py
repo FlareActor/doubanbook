@@ -31,3 +31,9 @@ class ImageItem(scrapy.Item):
     # images = Field()
     image_checksum = Field()
     pass
+
+
+# 抓取指数
+class IndexItem(scrapy.Item):
+    index_name = Field()
+    index_number = Field()

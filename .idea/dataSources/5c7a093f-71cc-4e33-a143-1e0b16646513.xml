@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MySQL - @localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.0">
+    <root id="1"/>
+    <schema id="2" parent="1" name="db_qiuyi">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="hive_test"/>
+    <schema id="4" parent="1" name="information_schema"/>
+    <schema id="5" parent="1" name="mysql"/>
+    <schema id="6" parent="1" name="performance_schema"/>
+    <schema id="7" parent="1" name="sys"/>
+    <table id="8" parent="2" name="tb_admin"/>
+    <table id="9" parent="2" name="tb_comment"/>
+    <table id="10" parent="2" name="tb_department"/>
+    <table id="11" parent="2" name="tb_doctor"/>
+    <table id="12" parent="2" name="tb_hospital"/>
+    <table id="13" parent="2" name="tb_ill"/>
+    <table id="14" parent="2" name="tb_keywords"/>
+    <table id="15" parent="2" name="tb_patient">
+      <Comment>患者信息</Comment>
+    </table>
+    <table id="16" parent="2" name="tb_question"/>
+    <table id="17" parent="2" name="tb_reply"/>
+    <table id="18" parent="2" name="tb_search_info"/>
+    <column id="19" parent="8" name="id">
+      <Position>1</Position>
+      <Comment>管理员id</Comment>
+      <DataType>tinyint(2)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="20" parent="8" name="name">
+      <Position>2</Position>
+      <Comment>管理员姓名</Comment>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="21" parent="8" name="password">
+      <Position>3</Position>
+      <Comment>管理员密码</Comment>
+      <DataType>varchar(200)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="22" parent="8" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="23" parent="9" name="id">
+      <Position>1</Position>
+      <Comment>评论id</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="24" parent="9" name="patient_id">
+      <Position>2</Position>
+      <Comment>病人id</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="25" parent="9" name="doctor_id">
+      <Position>3</Position>
+      <Comment>医生id</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="26" parent="9" name="time">
+      <Position>4</Position>
+      <Comment>评论时间</Comment>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="27" parent="9" name="rate">
+      <Position>5</Position>
+      <Comment>给医生的评级</Comment>
+      <DataType>tinyint(3)|0</DataType>
+    </column>
+    <column id="28" parent="9" name="content">
+      <Position>6</Position>
+      <Comment>内容</Comment>
+      <DataType>varchar(200)|0</DataType>
+    </column>
+    <key id="29" parent="9" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="30" parent="10" name="id">
+      <Position>1</Position>
+      <Comment>科室id</Comment>
+      <DataType>int(11) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="31" parent="10" name="name">
+      <Position>2</Position>
+      <Comment>科室名称</Comment>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="32" parent="10" name="description">
+      <Position>3</Position>
+      <Comment>科室描述</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="33" parent="10" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="34" parent="11" name="id">
+      <Position>1</Position>
+      <Comment>医生id</Comment>
+      <DataType>int(11) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="35" parent="11" name="name">
+      <Position>2</Position>
+      <Comment>姓名</Comment>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="36" parent="11" name="password">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="37" parent="11" name="title">
+      <Position>4</Position>
+      <Comment>头衔</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="38" parent="11" name="hospital_id">
+      <Position>5</Position>
+      <Comment>医院id</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="39" parent="11" name="department_id">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="40" parent="11" name="good_at">
+      <Position>7</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="41" parent="11" name="rating">
+      <Position>8</Position>
+      <Comment>评级（1-10）</Comment>
+      <DataType>float unsigned|0</DataType>
+    </column>
+    <column id="42" parent="11" name="num_treatment">
+      <Position>9</Position>
+      <Comment>治疗患者数目</Comment>
+      <DataType>smallint(5) unsigned|0</DataType>
+    </column>
+    <column id="43" parent="11" name="num_reservation">
+      <Position>10</Position>
+      <Comment>咨询量</Comment>
+      <DataType>smallint(5) unsigned|0</DataType>
+    </column>
+    <column id="44" parent="11" name="introduction">
+      <Position>11</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="45" parent="11" name="phone">
+      <Position>12</Position>
+      <Comment>病人电话</Comment>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="46" parent="11" name="mail">
+      <Position>13</Position>
+      <Comment>邮件</Comment>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="47" parent="11" name="icon_id">
+      <Position>14</Position>
+      <Comment>头像路径</Comment>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="48" parent="11" name="user_type">
+      <Position>15</Position>
+      <Comment>用户类型</Comment>
+      <DataType>bit(1)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>b&apos;1&apos;</DefaultExpression>
+    </column>
+    <key id="49" parent="11" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="50" parent="12" name="id">
+      <Position>1</Position>
+      <Comment>医院id</Comment>
+      <DataType>int(11) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="51" parent="12" name="name">
+      <Position>2</Position>
+      <Comment>医院名</Comment>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="52" parent="12" name="rank">
+      <Position>3</Position>
+      <Comment>医院等级</Comment>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="53" parent="12" name="address">
+      <Position>4</Position>
+      <Comment>医院地址</Comment>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="54" parent="12" name="telephone">
+      <Position>5</Position>
+      <Comment>联系方式</Comment>
+      <DataType>varchar(15)|0</DataType>
+    </column>
+    <column id="55" parent="12" name="home_page">
+      <Position>6</Position>
+      <Comment>医院主页</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="56" parent="12" name="introduction">
+      <Position>7</Position>
+      <Comment>医院介绍</Comment>
+      <DataType>text|0</DataType>
+    </column>
+    <index id="57" parent="12" name="hospital_name">
+      <ColNames>name</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="58" parent="12" name="name">
+      <ColNames>name</ColNames>
+    </index>
+    <key id="59" parent="12" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="60" parent="12" name="hospital_name">
+      <ColNames>name</ColNames>
+      <UnderlyingIndexName>hospital_name</UnderlyingIndexName>
+    </key>
+    <column id="61" parent="13" name="id">
+      <Position>1</Position>
+      <Comment>疾病id</Comment>
+      <DataType>int(11) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="62" parent="13" name="name">
+      <Position>2</Position>
+      <Comment>疾病名</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="63" parent="13" name="department_id">
+      <Position>3</Position>
+      <Comment>科室id</Comment>
+      <DataType>tinyint(7) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="64" parent="13" name="alias">
+      <Position>4</Position>
+      <Comment>别名</Comment>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="65" parent="13" name="symptom">
+      <Position>5</Position>
+      <Comment>症状</Comment>
+      <DataType>varchar(200)|0</DataType>
+    </column>
+    <column id="66" parent="13" name="body_part">
+      <Position>6</Position>
+      <Comment>发病部位</Comment>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="67" parent="13" name="prone_group">
+      <Position>7</Position>
+      <Comment>易感人群</Comment>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="68" parent="13" name="related_ill">
+      <Position>8</Position>
+      <Comment>相关疾病编号</Comment>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="69" parent="13" name="definition">
+      <Position>9</Position>
+      <Comment>疾病定义</Comment>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="70" parent="13" name="etiology">
+      <Position>10</Position>
+      <Comment>病因</Comment>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="71" parent="13" name="clinical_feature">
+      <Position>11</Position>
+      <Comment>临床特征</Comment>
+      <DataType>text|0</DataType>
+    </column>
+    <key id="72" parent="13" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="73" parent="14" name="id">
+      <Position>1</Position>
+      <Comment>关键字id</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="74" parent="14" name="name">
+      <Position>2</Position>
+      <Comment>关键字名</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="75" parent="14" name="tag">
+      <Position>3</Position>
+      <Comment>关键字标签（用于选择表）</Comment>
+      <DataType>varchar(10)|0</DataType>
+    </column>
+    <column id="76" parent="14" name="num_search">
+      <Position>4</Position>
+      <Comment>搜索次数</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="77" parent="14" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="78" parent="15" name="id">
+      <Position>1</Position>
+      <Comment>用户id</Comment>
+      <DataType>int(11) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="79" parent="15" name="name">
+      <Position>2</Position>
+      <Comment>用户姓名</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="80" parent="15" name="password">
+      <Position>3</Position>
+      <Comment>密码</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="81" parent="15" name="email">
+      <Position>4</Position>
+      <Comment>邮箱</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="82" parent="15" name="tel">
+      <Position>5</Position>
+      <Comment>电话</Comment>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="83" parent="15" name="address">
+      <Position>6</Position>
+      <Comment>地址</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="84" parent="15" name="register_time">
+      <Position>7</Position>
+      <Comment>注册时间</Comment>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="85" parent="15" name="icon_id">
+      <Position>8</Position>
+      <Comment>头像id</Comment>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="86" parent="15" name="user_type">
+      <Position>9</Position>
+      <DataType>bit(1)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>b&apos;0&apos;</DefaultExpression>
+    </column>
+    <key id="87" parent="15" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="88" parent="16" name="id">
+      <Position>1</Position>
+      <Comment>问题id</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="89" parent="16" name="content">
+      <Position>2</Position>
+      <Comment>内容</Comment>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="90" parent="16" name="patient_id">
+      <Position>3</Position>
+      <Comment>病人id</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="91" parent="16" name="doctor_id">
+      <Position>4</Position>
+      <Comment>医生id</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="92" parent="16" name="department_id">
+      <Position>5</Position>
+      <Comment>科室id</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="93" parent="16" name="num_browse">
+      <Position>6</Position>
+      <Comment>浏览次数</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="94" parent="16" name="ask_time">
+      <Position>7</Position>
+      <Comment>问询时间</Comment>
+      <DataType>datetime|0</DataType>
+    </column>
+    <index id="95" parent="16" name="FKA4FC2F233CDD5030">
+      <ColNames>department_id</ColNames>
+    </index>
+    <index id="96" parent="16" name="FKA4FC2F23EC71F3E4">
+      <ColNames>patient_id</ColNames>
+    </index>
+    <key id="97" parent="16" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="98" parent="17" name="id">
+      <Position>1</Position>
+      <Comment>回复id</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="99" parent="17" name="content">
+      <Position>2</Position>
+      <Comment>内容</Comment>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="100" parent="17" name="reply_time">
+      <Position>3</Position>
+      <Comment>回复时间</Comment>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="101" parent="17" name="patient_id">
+      <Position>4</Position>
+      <Comment>患者id</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="102" parent="17" name="doctor_id">
+      <Position>5</Position>
+      <Comment>医生id</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="103" parent="17" name="department_id">
+      <Position>6</Position>
+      <Comment>部门id</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="104" parent="17" name="FKFABD79D9741D2E84">
+      <ColNames>doctor_id</ColNames>
+    </index>
+    <index id="105" parent="17" name="FKFABD79D9EC71F3E4">
+      <ColNames>patient_id</ColNames>
+    </index>
+    <key id="106" parent="17" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="107" parent="18" name="id">
+      <Position>1</Position>
+      <Comment>查询信息id</Comment>
+      <DataType>int(10) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="108" parent="18" name="user_type">
+      <Position>2</Position>
+      <Comment>查询信息用户类型</Comment>
+      <DataType>bit(1)|0</DataType>
+    </column>
+    <column id="109" parent="18" name="user_id">
+      <Position>3</Position>
+      <Comment>用户id</Comment>
+      <DataType>int(11) unsigned|0</DataType>
+    </column>
+    <column id="110" parent="18" name="content">
+      <Position>4</Position>
+      <Comment>内容</Comment>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <key id="111" parent="18" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
