@@ -38,5 +38,5 @@ class PhotoSpider(scrapy.Spider):
         image_urls = re.findall('{"pin_id".*?"file":.*?"key":"(.*?)"', script_content, re.S)
         if image_urls:
             image = ImageItem()
-            image['image_urls'] = map(lambda key: 'http://img.hb.aicdn.com/' + key + '_/fw/480', image_urls)
+            image['image_urls'] = map(lambda key: 'http://img.hb.aicdn.com/' + key + '_fw658', image_urls)  # _/fw/480
             yield image
