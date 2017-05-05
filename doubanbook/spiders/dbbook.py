@@ -37,9 +37,13 @@ class DbbookSpider(scrapy.Spider):
 
             next_page = response.xpath('//div[@class="paginator"]').xpath('span[@class="next"]/a/@href').extract_first()
             if next_page is not None:
+                print(next_page)
                 yield scrapy.Request(url=next_page, callback=self.parse)
 
     @staticmethod
     def __match(pattern, string):
         match = re.search(pattern, string, re.S)
-        return match.group(1).strip() if match else None
+        if match:
+            return match.group(1).strip()
+        else:
+            return None
