@@ -113,6 +113,7 @@ print(list_sim1)
 # cur.close()
 # db.close()
 
+
 if __name__ != "__main__":
     from time import time
 
