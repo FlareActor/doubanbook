@@ -43,7 +43,7 @@ class DoubanbookSpiderMiddleware(object):
         # or Item objects.
         pass
 
-    def process_start_requests(start_requests, spider):
+    def process_start_requests(self, start_requests, spider):
         # Called with the start requests of the spider, and works
         # similarly to the process_spider_output() method, except
         # that it doesn’t have a response associated.

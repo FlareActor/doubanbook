@@ -37,3 +37,4 @@ class ImageItem(scrapy.Item):
 class IndexItem(scrapy.Item):
     index_name = Field()
     index_number = Field()
+    pass
