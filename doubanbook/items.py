@@ -38,3 +38,10 @@ class IndexItem(scrapy.Item):
     index_name = Field()
     index_number = Field()
     pass
+
+
+# 抓取百度Dogs
+class DogItem(scrapy.Item):
+    image_urls = Field()
+    image_paths = Field()
+    pass
