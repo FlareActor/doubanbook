@@ -35,12 +35,10 @@ class MyImagePipeline(ImagesPipeline):
 class BaiduDogImagePipeline(ImagesPipeline):
     def get_media_requests(self, item, info):
         """(start_requests->parse)->(get_media_requests->file_path->item_completed)"""
-        print('get_media_requests:', item)
         yield scrapy.Request(url=item['image_urls'][0], meta={'path': item['image_paths']})
 
     def file_path(self, request, response=None, info=None):
         """自定义文件名"""
-        print('file_path')
         return '%s.jpg' % request.meta['path']
 
     def item_completed(self, results, item, info):

@@ -44,7 +44,6 @@ class BaiDuDogsSpider(Spider):
 
         df['name'] = df['label'].apply(index_dog)
         for index, data in df[['url', 'name']][:1].iterrows():
-            print('start_requests')
             yield scrapy.Request(
                 url=data['url'],
                 meta={'name': 'train/' + data['name'], '_url': data['url']})
@@ -61,5 +60,38 @@ class BaiDuDogsSpider(Spider):
         dog['image_urls'] = [
             meta_data['_url'] if 'http:' or 'https:' in meta_data['_url'] else ('http:' + meta_data['_url'])]
         dog['image_paths'] = meta_data['name']
-        print('parse', response.body)
         yield dog
+
+
+if __name__ == '__main__':
+    # 整理一波未被爬取下来的图片集合
+    import os
+    import re
+
+    train_df = pd.read_csv('/Users/wangdexun/Downloads/Baidu-dogs/data/train/data_train.txt', header=None, sep='\n')
+    train_df['url'] = train_df[0].apply(lambda x: x.split(" ")[1])
+    train_df['label'] = train_df[0].apply(lambda x: x.split(" ")[0]).astype(int)
+    train_df['pos'] = 0
+    train_df.drop(0, axis=1, inplace=True)
+    train_crawled = os.listdir('/Users/wangdexun/Desktop/dogs/train')
+    train_crawled = list(map(lambda x: re.split('\\.|_', x)[:2], train_crawled))
+    train_crawled = pd.DataFrame(train_crawled[1:], dtype='int', columns=['label', 'index']).sort_values(
+        ['label', 'index'])
+    for label in np.unique(train_df['label']):
+        train_index = train_df[train_df.label == label].index
+        train_df.loc[train_index, 'pos'] = train_index - train_index[0]
+        train_df.drop(train_index[0] + train_crawled[train_crawled.label == label]['index'], axis=0, inplace=True)
+
+    test_df = pd.read_csv('/Users/wangdexun/Downloads/Baidu-dogs/data/测试数据-1.txt', header=None, sep='\n')
+    test_df.columns = ['url']
+    test_crawled = os.listdir('/Users/wangdexun/Desktop/dogs/test')
+    test_crawled = pd.DataFrame(list(map(lambda x: re.split('\\.|_', x)[0], test_crawled)),
+                                columns=['index'], dtype='int').sort_values('index')
+    test_df.drop(test_crawled['index'], axis=0, inplace=True)
+    test_df['pos'] = test_df.index
+
+    train_df.to_csv('train_uncrawled.csv', index=False)
+    test_df.to_csv('test_uncrawled.csv', index=False)
+    print(train_df)
+    print(test_df)
+    pass
